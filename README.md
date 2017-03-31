@@ -41,6 +41,86 @@ For a step-by-step understanding of how this package works:
 - _Sinks_ do most of the heavy lifting in this package; they handle the
   writing, and reading, of _segments_ to/from a persistent storage medium.
 
+## Examples
+
+### Create a new disk-backed log
+
+```go
+package main
+
+import (
+	"log"
+
+	wal "gopkg.in/nesv/yawal.v1"
+)
+
+func main() {
+	// Create a new DirectorySink.
+	sink, err := wal.NewDirectorySink("wal")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	
+	// Create a new logger that will store data in 1MB segment files.
+	logger, err := wal.New(sink, wal.SegmentSize(1024 * 1024))
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// Note, calling a *wal.Logger's Close() method will also close the
+	// underlying Sink.
+	defer logger.Close()
+
+	// Write data to your logger.
+	for i := 0; i < 100; i++ {
+		if err := logger.Write([]byte("Wooo, data!")); err != nil {
+			log.Println("error:", err)
+			return
+		}
+	}
+
+	return
+}
+```
+
+### Create an in-memory log
+
+```go
+sink, err := wal.NewMemorySink()
+if err != nil {
+	log.Fatalln(err)
+}
+
+logger, err := wal.New(sink, wal.SegmentSize(1024*1024))
+if err != nil {
+	log.Fatalln(err)
+}
+defer logger.Close()
+
+// ...write data...
+```
+
+### Read data from an existing log
+
+```go
+sink, err := wal.NewDirectorySink("wal")
+if err != nil {
+	log.Fatalln(err)
+}
+defer sink.Close()
+
+r := wal.NewReader(sink)
+for r.Next() {
+	data := r.Data()
+	offset := r.Offset()
+
+	fmt.Printf("Data at offset %s: %x\n", offset, data)
+}
+if err := r.Error(); err != nil {
+	log.Println("error reading from wal:", err)
+}
+```
+
 ## Goals
 
 - If it moves, document it.
