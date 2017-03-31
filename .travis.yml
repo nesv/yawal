@@ -1,0 +1,10 @@
+language: go
+go:
+  - 1.x
+  - master
+env:
+  - GOOS=linux
+  - GOOS=freebsd
+  - GOOS=openbsd
+  - GOOS=darwin
+  - GOOS=windows
