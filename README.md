@@ -2,6 +2,10 @@
 
 (Yet another) write-ahead logging package, for Go.
 
+[![Build Status](https://travis-ci.org/nesv/yawal.svg?branch=master)](https://travis-ci.org/nesv/yawal)
+
+## Installing
+
 ```
 go get -u gopkg.in/nesv/yawal.v1
 ```
