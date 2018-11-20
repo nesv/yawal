@@ -2,7 +2,7 @@
 
 (Yet another) write-ahead logging package, for Go.
 
-[![Build Status](https://travis-ci.org/nesv/yawal.svg?branch=master)](https://travis-ci.org/nesv/yawal)
+[![Travis CI](https://img.shields.io/travis/nesv/yawal.svg?style=for-the-badge)](https://travis-ci.org/nesv/yawal)
 [![Godoc](https://img.shields.io/badge/godoc-reference-blue.svg?&longCache=true&style=for-the-badge)](https://godoc.org/github.com/nesv/yawal)
 
 ## Installing
