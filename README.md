@@ -3,12 +3,12 @@
 (Yet another) write-ahead logging package, for Go.
 
 [![Travis CI](https://img.shields.io/travis/nesv/yawal.svg?style=for-the-badge)](https://travis-ci.org/nesv/yawal)
-[![Godoc](https://img.shields.io/badge/godoc-reference-blue.svg?&longCache=true&style=for-the-badge)](https://godoc.org/github.com/nesv/yawal)
+[![Godoc](https://img.shields.io/badge/godoc-reference-blue.svg?&longCache=true&style=for-the-badge)](https://pkg.go.dev/github.com/nesv/yawal)
 
 ## Installing
 
 ```
-go get -u gopkg.in/nesv/yawal.v1
+go get -u github.com/nesv/yawal
 ```
 
 ## Why should I use this package?
