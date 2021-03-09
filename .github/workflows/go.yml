@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  go1.15:
+  go1_15:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
       - name: test
         run: go test -v ./...
         
-  go1.16:
+  go1_16:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
