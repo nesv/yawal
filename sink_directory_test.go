@@ -9,21 +9,6 @@ import (
 	"time"
 )
 
-// withTempDir creates the temporary directory specified by dirname, for use
-// within a test, and makes sure the directory and all of its contents are
-// afterwards removed.
-func withTempDir(dirname string, fn func(string) error) error {
-	if dirname == "" {
-		dirname = fmtTempDir("test")
-	}
-
-	if err := os.MkdirAll(dirname, 0700); err != nil {
-		return err
-	}
-	defer os.RemoveAll(dirname)
-	return fn(dirname)
-}
-
 func fmtTempDir(prefix string) string {
 	return filepath.Join(os.TempDir(), fmt.Sprintf("%s.%d", prefix, testTimestamp.UnixNano()))
 }

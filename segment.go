@@ -48,7 +48,7 @@ var (
 // segment, this method will return ErrNotEnoughSpace.
 func (s *Segment) Write(p []byte) (int, error) {
 	// If p is nil, or has a length of zero, return early.
-	if p == nil || len(p) == 0 {
+	if len(p) == 0 {
 		return 0, nil
 	}
 

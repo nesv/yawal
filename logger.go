@@ -48,17 +48,6 @@ func (l *Logger) lock(fn func() error) error {
 	return nil
 }
 
-// rlock runs the given function fn, while holding a read lock on a *Logger's
-// internal mutex.
-func (l *Logger) rlock(fn func() error) error {
-	l.mu.RLock()
-	defer l.mu.RUnlock()
-	if err := fn(); err != nil {
-		return err
-	}
-	return nil
-}
-
 // Latest returns the offsets of the first (oldest), and last (newest)
 // data chunks.
 func (l *Logger) Offsets() (first, last Offset) {
