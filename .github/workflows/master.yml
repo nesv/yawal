@@ -1,0 +1,10 @@
+name: Check master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    uses: ./.github/workflows/test.yml

@@ -25,19 +25,16 @@ import (
 //
 func FlushInterval(logger *wal.Logger, d time.Duration, onError func(error)) {
 	timer := time.NewTimer(d)
-	for {
-		select {
-		case <-timer.C:
-			if err := logger.Flush(); err != nil && err == wal.ErrLoggerClosed {
-				break
-			} else if err != nil {
-				onError(err)
-			}
-			if !timer.Stop() {
-				<-timer.C
-			}
-			timer.Reset(d)
+	for range timer.C {
+		if err := logger.Flush(); err != nil && err == wal.ErrLoggerClosed {
+			break
+		} else if err != nil {
+			onError(err)
 		}
+		if !timer.Stop() {
+			<-timer.C
+		}
+		timer.Reset(d)
 	}
 	if !timer.Stop() {
 		<-timer.C
