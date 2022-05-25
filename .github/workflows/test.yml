@@ -20,3 +20,4 @@ jobs:
         with:
           version: '2022.1'
           cache-key: ${{ matrix.go }}
+          install-go: false
