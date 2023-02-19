@@ -3,7 +3,7 @@ package walutil
 import (
 	"time"
 
-	wal "github.com/nesv/yawal"
+	wal "go.nesv.ca/yawal"
 )
 
 // FlushInterval creates a time.Timer to fire after the given time.Duration d,

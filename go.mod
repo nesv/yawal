@@ -1,4 +1,4 @@
-module github.com/nesv/yawal
+module go.nesv.ca/yawal
 
 go 1.16
 
