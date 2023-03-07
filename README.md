@@ -56,7 +56,7 @@ package main
 import (
 	"log"
 
-	wal "gopkg.in/nesv/yawal.v1"
+	wal "go.nesv.ca/yawal"
 )
 
 func main() {
